@@ -21,7 +21,7 @@ const sendRecoveryEmail = async (email: string) => {
   return { status: isValidEmail ? 200 : 400 };
 };
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
 
 export default function PasswordRecoveryPage() {
   const [email, setEmail] = useState("");

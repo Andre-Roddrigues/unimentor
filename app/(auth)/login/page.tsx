@@ -1,7 +1,7 @@
 import LoginForm from "@/components/forms/LoginForm";
 import Logo from "@/components/navbar/Logo";
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
 
 export default async function LoginPage() {
   return (

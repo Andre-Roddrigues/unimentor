@@ -15,6 +15,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import SuccessOTP from "@/components/verify-otp/SuccessOTP";
 import { RefreshCw } from "lucide-react";
+export const dynamic = "force-dynamic";
+
 
 type OtpFormProps = {
   email: string;

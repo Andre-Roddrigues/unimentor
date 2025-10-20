@@ -2,7 +2,7 @@ import RegisterForm from "@/components/forms/RegisterForm";
 import Logo from "@/components/navbar/Logo";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
 
 export default async function RegisterPage() {
   return (

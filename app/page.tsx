@@ -7,7 +7,7 @@ import getAllBooks, {
 import BookCarousel from "@/components/BookCarousel";
 import Container from "@/components/Container";
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
 
 export default async function Home() {
   try {

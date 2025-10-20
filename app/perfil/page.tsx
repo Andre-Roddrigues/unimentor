@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { User, Booking, BookingStats } from '@/types/user';
 import { Calendar, User as UserIcon, Settings } from 'lucide-react';
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
 
 // Mock data - substitua por chamada à API
 const mockUser: User = {
