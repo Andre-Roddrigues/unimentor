@@ -11,7 +11,7 @@ interface props {
   user: any;
   status?: string;
 }
-export default function PerfilUser({ user }: props) {
+export default function PerfilUser() {
   const pathname = usePathname();
 
   const [imageUrl, setImageUrl] = useState<string>();
@@ -43,7 +43,7 @@ export default function PerfilUser({ user }: props) {
   //   fetchAlunoData();
   // }, [status, userId]);
 
-  const siglas = criarSiglas(user?.name, user?.lastName);
+  // const siglas = criarSiglas(user?.name, user?.lastName);
 
   const handleToggleDropdown = () => {
     if (pathname !== "/user/perfil") {
@@ -70,9 +70,9 @@ export default function PerfilUser({ user }: props) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  if (!user) {
-    return null;
-  }
+  // if (!user) {
+  //   return null;
+  // }
 
   return (
     <div className="relative">
@@ -83,7 +83,7 @@ export default function PerfilUser({ user }: props) {
         {/* <span className="text-sm pl-3 hidden md:block">Meu Perfil</span> */}
         <Avatar className="h-4/5 aspect-square">
           <AvatarImage src={imageUrl || " "} />
-          <AvatarFallback>{siglas}</AvatarFallback>
+          {/* <AvatarFallback>{siglas}</AvatarFallback> */}
         </Avatar>
       </div>
 

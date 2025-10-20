@@ -6,7 +6,7 @@ import Footer from "@/components/footer/Footer";
 import { CartProvider } from "@/contexts/CartContext";
 import { OrderProvider } from "@/contexts/OrderContext";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { getUser } from "@/services/auth-services";
+// import { getUser } from "@/services/auth-services";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -31,13 +31,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await getUser();
+  // const user = await getUser();
   return (
     <html lang="en" className="light">
       <body className={`flex flex-col min-h-screen w-screen overflow-x-hidden`}>
         <OrderProvider>
           <CartProvider>
-            <Navbar user={user} />
+            <Navbar />
             <div className="flex-grow">{children}</div>
             <Footer />
           </CartProvider>

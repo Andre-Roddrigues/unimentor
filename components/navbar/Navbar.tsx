@@ -18,7 +18,7 @@ interface NavbarProps {
   user: UserSession | null;
 }
 
-function Navbar({ user }: NavbarProps) {
+function Navbar() {
   return (
     <header className="sticky font-playfair top-0 z-50 border-b bg-card shadow-sm">
       <div className="max-w-7xl mx-auto md:px-4 lg:px-0  w-full  ">
@@ -31,17 +31,15 @@ function Navbar({ user }: NavbarProps) {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <div className={`${user ? "hidden" : "flex"}`}>
+            <div className="flex">
               <AuthButtons />
             </div>
             {/* <SearchPopover /> */}
             {/* <CartListButton /> */}
             <div
-              className={`${
-                user ? "flex" : "hidden"
-              } aspect-square rounded-full `}
+              className= "flex aspect-square rounded-full"
             >
-              <PerfilUser user={user} />
+              <PerfilUser />
             </div>
             {/* <CartListDropdown /> */}
           </div>
