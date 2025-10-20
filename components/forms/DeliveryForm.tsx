@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, MapPin, User, Mail } from "lucide-react";
-import { ShippingSection } from "../checkout/ShippingSection";
+// import { ShippingSection } from "../checkout/ShippingSection";
 import { InputField } from "../ui/InputField";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -132,10 +132,10 @@ function DeliveryForm({ onDeliveryChange, deliveryData }: DeliveryFormProps) {
               <Button variant={"outline"}>Ver Mapa</Button>
             </Link>
           </div>
-          <ShippingSection
+          {/* <ShippingSection
             onShippingSelect={handleShippingSelect}
             selectedShipping={deliveryData.selectedShipping}
-          />
+          /> */}
         </div>
       </CardContent>
     </Card>
