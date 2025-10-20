@@ -41,7 +41,7 @@ interface Params {
 }
 
 export default function MentorDetailPage({ params }: Params) {
-  const mentor = mockMentor; 
+  const mentor = mockMentor;
 
   return (
     <Container>
@@ -62,7 +62,7 @@ export default function MentorDetailPage({ params }: Params) {
                     className="object-cover rounded-lg"
                   />
                 </div>
-                
+
                 <div className="text-center">
                   <h1 className="text-2xl font-bold text-primary dark:text-white">
                     {mentor.name}
@@ -70,7 +70,7 @@ export default function MentorDetailPage({ params }: Params) {
                   <p className="text-gray-600 dark:text-gray-300 mb-2">
                     {mentor.title} • {mentor.company}
                   </p>
-                  
+
                   <div className="flex items-center justify-center text-yellow-500 mb-4">
                     <Star className="w-5 h-5 fill-current" />
                     <span className="ml-1 font-medium">{mentor.rating.toFixed(1)}</span>
@@ -98,10 +98,11 @@ export default function MentorDetailPage({ params }: Params) {
                     <span className="text-gray-500 ml-1">/hora</span>
                   </div>
 
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-blue-700  mb-3">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Agendar Sessão
-                  </Button>
+                  <Link href={`/mentores/agendar/${mentor.id}`}>
+                    <Button className="bg-primary  text-white">
+                      Agendar Sessão
+                    </Button>
+                  </Link>
                 </div>
               </div>
 
@@ -141,7 +142,7 @@ export default function MentorDetailPage({ params }: Params) {
               <h2 className="text-2xl font-bold mb-4">Áreas de Especialização</h2>
               <div className="flex flex-wrap gap-2">
                 {mentor.categories.map((category) => (
-                  <Badge key={category}  className="bg-primary text-primary-foreground px-3 py-1">
+                  <Badge key={category} className="bg-primary text-primary-foreground px-3 py-1">
                     {category}
                   </Badge>
                 ))}

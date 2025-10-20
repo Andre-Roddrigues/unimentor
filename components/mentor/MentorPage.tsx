@@ -18,10 +18,11 @@ const mockMentors: Mentor[] = [
     categories: ['Desenvolvimento Web', 'JavaScript', 'React', 'Node.js'],
     image: '/images/mentorhero.jpg',
     description: 'Especialista em desenvolvimento full-stack com 8 anos de experiência em startups e empresas de tecnologia.',
-    availability: ['2025-10-17', '18:00-21:00', '2025-10-18', '18:00-21:00','2025-10-19', '18:00-21:00' ], 
+    availability: ['2025-10-17', '18:00-21:00', '2025-10-18', '18:00-21:00', '2025-10-19', '18:00-21:00'],
     languages: ['Português', 'Inglês'],
     isOnline: true,
     isLocal: true,
+    availableSlots: []
   },
   {
     id: '2',
@@ -39,6 +40,7 @@ const mockMentors: Mentor[] = [
     languages: ['Português', 'Inglês', 'Xangana'],
     isOnline: false,
     isLocal: true,
+    availableSlots: []
   },
   {
     id: '3',
@@ -56,6 +58,7 @@ const mockMentors: Mentor[] = [
     languages: ['Português', 'Inglês'],
     isOnline: true,
     isLocal: true,
+    availableSlots: []
   },
   {
     id: '4',
@@ -73,6 +76,7 @@ const mockMentors: Mentor[] = [
     languages: ['Português', 'Inglês'],
     isOnline: true,
     isLocal: true,
+    availableSlots: []
   },
   {
     id: '5',
@@ -90,6 +94,7 @@ const mockMentors: Mentor[] = [
     languages: ['Português', 'Inglês', 'Macua'],
     isOnline: true,
     isLocal: true,
+    availableSlots: []
   },
   {
     id: '6',
@@ -107,6 +112,7 @@ const mockMentors: Mentor[] = [
     languages: ['Português', 'Inglês', 'Xangana'],
     isOnline: false,
     isLocal: true,
+    availableSlots: []
   },
 ];
 
