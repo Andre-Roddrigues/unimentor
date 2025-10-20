@@ -2,6 +2,8 @@ import RegisterForm from "@/components/forms/RegisterForm";
 import Logo from "@/components/navbar/Logo";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function RegisterPage() {
   return (
     <main className="min-h-screen flex items-center justify-center p-2 sm:p-4 ">

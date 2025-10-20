@@ -20,7 +20,8 @@ const sendRecoveryEmail = async (email: string) => {
   const isValidEmail = email.includes("@") && email.includes(".");
   return { status: isValidEmail ? 200 : 400 };
 };
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default function PasswordRecoveryPage() {
   const [email, setEmail] = useState("");

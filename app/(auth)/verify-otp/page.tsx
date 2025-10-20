@@ -7,6 +7,8 @@ interface VerifyOTPProps {
   };
 }
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default function VerifyOTP({ searchParams }: VerifyOTPProps) {
   const email = searchParams.email || "";
 
