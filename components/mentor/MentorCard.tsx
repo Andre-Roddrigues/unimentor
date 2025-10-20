@@ -21,11 +21,11 @@ export function MentorCard({ mentor }: MentorCardProps) {
           fill
           className="object-cover rounded-t-lg"
         />
-        <div className="absolute top-3 right-3">
+        {/* <div className="absolute top-3 right-3">
           <Badge variant={mentor.isOnline ? "default" : "secondary"}>
             {mentor.isOnline ? 'Online' : 'Presencial'}
           </Badge>
-        </div>
+        </div> */}
       </div>
 
       {/* Conteúdo do Card */}

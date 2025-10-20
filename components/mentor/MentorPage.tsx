@@ -4,11 +4,12 @@ import { MentorFilters, FilterState } from '@/components/mentor/MentorFilters';
 import Container from '@/components/Container';
 import { Mentor } from '@/types/mentorship';
 import { Search } from 'lucide-react';
+import Link from 'next/link';
 
 const mockMentors: Mentor[] = [
   {
     id: '1',
-    name: 'Maria Santos',
+    name: 'Andre RN',
     title: 'Senior Software Engineer',
     company: 'Tech Solutions Mozambique',
     experience: 8,
@@ -26,7 +27,7 @@ const mockMentors: Mentor[] = [
   },
   {
     id: '2',
-    name: 'Carlos Machava',
+    name: 'Akil Machava',
     title: 'Product Manager',
     company: 'Innovation Labs',
     experience: 6,
@@ -34,7 +35,7 @@ const mockMentors: Mentor[] = [
     price: 280,
     location: 'Maputo, Centro',
     categories: ['Gestão de Produto', 'Agile', 'Scrum', 'UX Research'],
-    image: '/images/mentorhero.jpg',
+    image: '/images/uni(3).jpg',
     description: 'Product Manager com experiência em liderar equipes ágeis e desenvolver produtos digitais de sucesso.',
     availability: ['Segunda a Sexta', '09:00-17:00'],
     languages: ['Português', 'Inglês', 'Xangana'],
@@ -44,7 +45,7 @@ const mockMentors: Mentor[] = [
   },
   {
     id: '3',
-    name: 'Ana Silva',
+    name: 'Williamo Muhammed',
     title: 'Digital Marketing Specialist',
     company: 'Digital Moçambique',
     experience: 5,
@@ -52,7 +53,7 @@ const mockMentors: Mentor[] = [
     price: 220,
     location: 'Beira, Sofala',
     categories: ['Marketing Digital', 'SEO', 'Redes Sociais', 'Google Ads'],
-    image: '/images/mentorhero.jpg',
+    image: '/images/uni(4).jpg',
     description: 'Especialista em marketing digital com foco em estratégias para o mercado moçambicano.',
     availability: ['Terça a Sábado', '10:00-19:00'],
     languages: ['Português', 'Inglês'],
@@ -147,7 +148,7 @@ export default function MentoresPage() {
           />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
           <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {mockMentors.length}+
@@ -172,7 +173,7 @@ export default function MentoresPage() {
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Avaliação Média</div>
           </div>
-        </div>
+        </div> */}
 
         <div className="mb-8">
           <div className="flex justify-between items-center mb-6">
@@ -212,9 +213,9 @@ export default function MentoresPage() {
           <p className="mb-6 opacity-90">
             Compartilhe seu conhecimento e ajude outros profissionais a crescerem
           </p>
-          <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          <Link href="https://unitec.co.mz/" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
             Cadastrar como Mentor
-          </button>
+          </Link>
         </div>
       </div>
     </Container>

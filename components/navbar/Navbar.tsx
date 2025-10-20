@@ -34,8 +34,8 @@ function Navbar({ user }: NavbarProps) {
             <div className={`${user ? "hidden" : "flex"}`}>
               <AuthButtons />
             </div>
-            <SearchPopover />
-            <CartListButton />
+            {/* <SearchPopover /> */}
+            {/* <CartListButton /> */}
             <div
               className={`${
                 user ? "flex" : "hidden"

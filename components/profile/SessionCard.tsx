@@ -1,8 +1,11 @@
 // components/profile/SessionCard.tsx
+'use client';
+
+import { useState } from 'react';
 import { Booking } from '@/types/user';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, Clock, MapPin, Video, Star, MoreVertical } from 'lucide-react';
+import { Calendar, Clock, MapPin, Video, Star, MoreVertical, Send } from 'lucide-react';
 import Image from 'next/image';
 import {
   DropdownMenu,
@@ -10,18 +13,26 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Textarea } from '@/components/ui/textarea';
 
 interface SessionCardProps {
   booking: Booking;
   onReschedule: (booking: Booking) => void;
   onCancel: (booking: Booking) => void;
-  onRate: (booking: Booking) => void;
+  onRate: (booking: Booking, rating: number, review?: string) => void;
 }
 
 export function SessionCard({ booking, onReschedule, onCancel, onRate }: SessionCardProps) {
+  const [isRating, setIsRating] = useState(false);
+  const [rating, setRating] = useState(booking.rating || 0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [review, setReview] = useState(booking.review || '');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const isUpcoming = booking.status === 'confirmed' || booking.status === 'pending';
   const isCompleted = booking.status === 'completed';
   const isCancelled = booking.status === 'cancelled';
+  const hasRated = Boolean(booking.rating);
 
   const getStatusVariant = (status: string) => {
     switch (status) {
@@ -50,6 +61,47 @@ export function SessionCard({ booking, onReschedule, onCancel, onRate }: Session
       month: 'long',
       day: 'numeric'
     });
+  };
+
+  const handleStarClick = (starRating: number) => {
+    setRating(starRating);
+  };
+
+  const handleStarHover = (starRating: number) => {
+    setHoverRating(starRating);
+  };
+
+  const handleStarLeave = () => {
+    setHoverRating(0);
+  };
+
+  const handleSubmitRating = async () => {
+    if (rating === 0) {
+      alert('Por favor, selecione uma avaliação com estrelas');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await onRate(booking, rating, review);
+      setIsRating(false);
+    } catch (error) {
+      console.error('Erro ao enviar avaliação:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleStartRating = () => {
+    setIsRating(true);
+    setRating(booking.rating || 0);
+    setReview(booking.review || '');
+  };
+
+  const handleCancelRating = () => {
+    setIsRating(false);
+    setRating(booking.rating || 0);
+    setReview(booking.review || '');
   };
 
   return (
@@ -94,8 +146,8 @@ export function SessionCard({ booking, onReschedule, onCancel, onRate }: Session
                   </DropdownMenuItem>
                 </>
               )}
-              {isCompleted && !booking.rating && (
-                <DropdownMenuItem onClick={() => onRate(booking)}>
+              {isCompleted && !hasRated && (
+                <DropdownMenuItem onClick={handleStartRating}>
                   Avaliar Sessão
                 </DropdownMenuItem>
               )}
@@ -118,11 +170,6 @@ export function SessionCard({ booking, onReschedule, onCancel, onRate }: Session
           {booking.startTime} - {booking.endTime} ({booking.duration}min)
         </div>
         
-        {/* <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <MapPin className="w-4 h-4 mr-2" />
-          {booking.meetingLink ? 'Online' : 'Presencial'}
-        </div> */}
-        
         <div className="flex items-center text-sm font-semibold text-green-600">
           MT {booking.price.toFixed(2)}
         </div>
@@ -136,16 +183,130 @@ export function SessionCard({ booking, onReschedule, onCancel, onRate }: Session
         </div>
       )}
 
-      {isCompleted && booking.rating && (
-        <div className="flex items-center space-x-2 mb-4">
-          <div className="flex items-center text-yellow-500">
-            <Star className="w-4 h-4 fill-current" />
-            <span className="ml-1 text-sm font-medium">{booking.rating}.0</span>
-          </div>
-          {booking.review && (
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              "{booking.review}"
-            </p>
+      {/* Sistema de Rating */}
+      {isCompleted && (
+        <div className="border-t pt-4 mt-4">
+          {!isRating && hasRated && (
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      className={`w-5 h-5 ${
+                        star <= rating
+                          ? 'fill-yellow-400 text-yellow-400'
+                          : 'text-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {rating}.0
+                </span>
+              </div>
+              {booking.review && (
+                <p className="text-sm text-gray-600 dark:text-gray-400 flex-1 ml-4">
+                  "{booking.review}"
+                </p>
+              )}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleStartRating}
+                className="text-blue-600 hover:text-blue-700"
+              >
+                Editar Avaliação
+              </Button>
+            </div>
+          )}
+
+          {!isRating && !hasRated && (
+            <div className="text-center py-4">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                Como foi sua experiência com {booking.mentorName}?
+              </p>
+              <Button
+                onClick={handleStartRating}
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-2 mx-auto"
+              >
+                <Star className="w-4 h-4" />
+                Avaliar Sessão
+              </Button>
+            </div>
+          )}
+
+          {isRating && (
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Avalie a sessão
+                </label>
+                <div className="flex items-center space-x-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => handleStarClick(star)}
+                      onMouseEnter={() => handleStarHover(star)}
+                      onMouseLeave={handleStarLeave}
+                      className="focus:outline-none"
+                    >
+                      <Star
+                        className={`w-8 h-8 transition-colors ${
+                          star <= (hoverRating || rating)
+                            ? 'fill-yellow-400 text-yellow-400'
+                            : 'text-gray-300 hover:text-yellow-400'
+                        }`}
+                      />
+                    </button>
+                  ))}
+                  <span className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {rating}.0
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="review" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Comentário (opcional)
+                </label>
+                <Textarea
+                  id="review"
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+                  placeholder="Compartilhe sua experiência com esta sessão..."
+                  rows={3}
+                  className="resize-none"
+                />
+              </div>
+
+              <div className="flex justify-end space-x-2">
+                <Button
+                  variant="outline"
+                  onClick={handleCancelRating}
+                  disabled={isSubmitting}
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  onClick={handleSubmitRating}
+                  disabled={isSubmitting || rating === 0}
+                  className="flex items-center gap-2"
+                >
+                  {isSubmitting ? (
+                    'Enviando...'
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Enviar Avaliação
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
           )}
         </div>
       )}
