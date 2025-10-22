@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import mpesaLogo from "@/public/images/payments/Mpesa-logo.png";
-import visaLogo from "@/public/images/payments/visa-logo.png";
+import mpesaLogo from "@/public/images/payments/Mpesalogo.png";
+import visaLogo from "@/public/images/payments/visalogo.png";
 import masterCardLogo from "@/public/images/payments/masterCardIcon.png";
-import emola from "@/public/images/payments/emola.png";
+import emola from "@/public/images/payments/emolalogo.png";
 function PaymentsMethods() {
   return (
-    <div className="flex gap-3 items-center ">
+    <div className="flex gap-3 items-center grayscale ">
       <Image
         src={mpesaLogo}
         alt="Forma de pagamento Mpesa"
