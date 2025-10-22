@@ -1,7 +1,7 @@
 // components/sections/HowItWorks.tsx
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
   Search, 
@@ -106,17 +106,29 @@ export function HowItWorks() {
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
+const itemVariants: Variants = {
+  hidden: { 
+    y: 20, 
+    opacity: 0 
+  },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
     }
-  };
+  }
+};
+
+const itemVariantsSimple: Variants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: { duration: 0.6 }
+  }
+};
 
   return (
     <section id="comoFunciona" className="py-16 bg-gradient-to-b from-secondary/0 to-secondary/10 dark:bg-gray-900">
