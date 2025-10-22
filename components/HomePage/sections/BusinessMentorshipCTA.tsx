@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function BusinessMentorshipCTA() {
   return (
     <section className="w-full px-4 py-16 relative overflow-hidden bg-gradient-to-b from-secondary/0 to-secondary/10 p-12 md:p-16 lg:p-20">
@@ -47,12 +49,14 @@ export default function BusinessMentorshipCTA() {
 
             {/* Botões alinhados à direita */}
             <div className="flex flex-col sm:flex-row gap-4 justify-end">
+                <Link href="https://unitec.co.mz/">
               <button className="group relative bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 flex items-center justify-between min-w-[200px] shadow-lg hover:shadow-xl">
                 <span>Saiba Mais</span>
                 <div className="ml-4 w-6 h-6 rounded-full bg-blue-600/20 group-hover:bg-white/70 transition-colors flex items-center justify-center">
                   <div className="w-2 h-2 rounded-full bg-blue-600"></div>
                 </div>
               </button>
+              </Link>
             </div>
           </div>
         </div>

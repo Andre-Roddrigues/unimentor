@@ -17,7 +17,7 @@ export default function SectionHome() {
             <HowItWorks />
             <FindMentorCTA />
             <BusinessMentorshipCTA />
-            {/* <BusinessMentorshipCT /> */}
+            <BusinessMentorshipCT />
             <CTASection />
         </main>
     );
