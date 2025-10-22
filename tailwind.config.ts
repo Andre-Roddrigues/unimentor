@@ -98,6 +98,9 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         bounceAndResize: "bounceAndResize 1s ease-in-out",
         bounceAndResize2: "bounceAndResize2 1s ease-in-out",
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-medium': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       fontFamily: {
         playfair: ["var(--font-playfair)", "serif"],

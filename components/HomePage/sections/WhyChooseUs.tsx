@@ -91,7 +91,7 @@ export function WhyChooseUsMinimal() {
                         {/* Header */}
                         <div className="text-center mb-12">
                             <h3 className="text-2xl md:text-3xl font-bold  dark:text-white mb-6">
-                                Não é só mentoria. É uma parceria para seu crescimento
+                                Não é só mentoria. <span className="text-primary"> É uma parceria para seu crescimento</span>
                             </h3>
                             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                                 Cada sessão é um passo calculado em direção aos seus objectivos, com métricas claras e suporte contínuo.

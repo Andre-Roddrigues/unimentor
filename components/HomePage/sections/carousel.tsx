@@ -97,7 +97,7 @@ export function SimpleMentorshipCarousel() {
     return (
         <div className="py-16 bg-white dark:bg-gray-900 overflow-hidden">
             <div className="container mx-auto px-4">
-                <h3 className="text-2xl font-bold text-center  dark:text-white mb-8">
+                <h3 className="text-2xl font-bold text-center text-primary  dark:text-white mb-8">
                     Áreas de Mentoria
                 </h3>
 
