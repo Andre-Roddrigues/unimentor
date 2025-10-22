@@ -44,8 +44,8 @@ export default function BusinessMentorshipCTA() {
 
             {/* Botões alinhados à direita */}
             <div className="flex flex-col sm:flex-row gap-4 justify-end">
-              <button className="group relative bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 flex items-center justify-between min-w-[250px] shadow-lg hover:shadow-xl">
-                <span>Falar com Especialista</span>
+              <button className="group relative bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 flex items-center justify-between min-w-[200px] shadow-lg hover:shadow-xl">
+                <span>Fale Connosco</span>
                 <div className="ml-4 w-6 h-6 rounded-full bg-blue-600/20 group-hover:bg-white/70 transition-colors flex items-center justify-center">
                   <div className="w-2 h-2 rounded-full bg-blue-600"></div>
                 </div>
