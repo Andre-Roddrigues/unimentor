@@ -35,7 +35,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 dark:from-slate-600 dark:via-slate-900 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-r from-secondary/5 to-secondary/10 dark:from-slate-600 dark:via-slate-900 overflow-hidden">
       <div className="container mx-auto px-8 lg:px-20 py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
           <motion.div
@@ -59,7 +59,7 @@ const HeroSection = () => {
                   key={index}
                   className="flex items-center space-x-2 text-card-foreground"
                 >
-                  <span className="text-primary text-lg lg:text-xl">
+                  <span className="text-secondary text-lg lg:text-xl">
                     {feature.icon}
                   </span>
                   <span>{feature.text}</span>

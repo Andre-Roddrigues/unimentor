@@ -18,7 +18,7 @@ const BookCarousel: React.FC<BookCarouselProps> = ({ title, books }) => {
   return (
     <div className="my-8 rounded-3xl">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold ">{title}</h2>
+        <h2 className="text-2xl text-primary font-bold ">{title}</h2>
         <CarouselControls carouselId={carouselId} />
       </div>
       <div

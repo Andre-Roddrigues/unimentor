@@ -170,7 +170,7 @@ export function SessionCard({ booking, onReschedule, onCancel, onRate }: Session
           {booking.startTime} - {booking.endTime} ({booking.duration}min)
         </div>
         
-        <div className="flex items-center text-sm font-semibold text-green-600">
+        <div className="flex items-center text-sm font-semibold text-secondary">
           MT {booking.price.toFixed(2)}
         </div>
       </div>

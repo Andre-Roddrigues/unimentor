@@ -69,14 +69,6 @@ export function StatsCards({ stats }: StatsCardsProps) {
                 </div>
               </div>
             </div>
-            
-            {/* Indicador animado */}
-            <div className="mt-4 flex items-center text-xs text-gray-500 dark:text-gray-400">
-              <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span>Ativo</span>
-              </div>
-            </div>
           </div>
         </div>
       ))}

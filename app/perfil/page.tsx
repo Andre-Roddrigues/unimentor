@@ -6,7 +6,7 @@ import { SessionCard } from '@/components/profile/SessionCard';
 import { ProfileForm } from '@/components/profile/ProfileForm';
 import Container from '@/components/Container';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tab';
 import { User, Booking, BookingStats } from '@/types/user';
 import { Calendar, User as UserIcon, Settings } from 'lucide-react';
 export const dynamic = "force-dynamic";
@@ -209,14 +209,13 @@ export default function ProfilePage() {
                                 {activeTab === 'all' && 'Todas as Sessões'}
                             </h2>
                             <span className="text-gray-600 dark:text-gray-400">
-                                {filteredBookings.length} sessões
+                                {filteredBookings.length} sessão
                             </span>
                         </div>
 
                         {filteredBookings.length > 0 ? (
                             <div className="space-y-4">
                                 {filteredBookings.map((booking) => (
-                                    // Na página do perfil, atualize o uso do SessionCard:
                                     <SessionCard
                                         key={booking.id}
                                         booking={booking}

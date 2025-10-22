@@ -6,10 +6,10 @@ function AuthButtons() {
   return (
     <div className="space-x-4">
       <Link href="/login">
-        <Button>Entrar</Button>
+        <Button className="border-secondary text- border bg-secondary hover:bg-secondary/70 duration-75">Entrar</Button>
       </Link>
       <Link href="/register">
-        <Button variant="outline">Registar</Button>
+        <Button className="border-secondary hover:bg-secondary/70 text-muted-foreground border bg-transparent">Registar</Button>
       </Link>
     </div>
   );

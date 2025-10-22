@@ -6,6 +6,7 @@ import getAllBooks, {
 } from "@/lib/actions/books-actions";
 import BookCarousel from "@/components/BookCarousel";
 import Container from "@/components/Container";
+import SectionHome from "@/components/HomePage/sections/Sections";
 export const dynamic = "force-dynamic";
 
 
@@ -18,13 +19,14 @@ export default async function Home() {
     return (
       <div className=" w-full">
         <HeroSection />
-        <Container>
+        <SectionHome />
+        {/* <Container>
           <div className=" flex flex-col gap-10 pb-24">
             <BookCarousel title="Mais Populares" books={popularBooks} />
             <BookCarousel title="Lançamentos" books={newestBooks} />
             <BookFormatSection />
           </div>
-        </Container>
+        </Container> */}
       </div>
     );
   } catch (error) {

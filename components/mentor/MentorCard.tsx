@@ -81,7 +81,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
         {/* Preço e Ação */}
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-2xl font-bold text-green-600">
+            <span className="text-2xl font-bold text-primary">
               MT {mentor.price.toFixed(2)}
             </span>
             <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">
@@ -89,7 +89,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
             </span>
           </div>
           <Link href={`/mentores/${mentor.id}`}>
-            <Button className="bg-primary text-primary-foreground ">
+            <Button className="bg-primary text-secondary ">
               Ver Perfil
             </Button>
           </Link>

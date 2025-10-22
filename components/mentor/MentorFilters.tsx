@@ -123,7 +123,7 @@ export function MentorFilters({ categories, locations, onFiltersChange }: Mentor
             </SelectContent>
           </Select>
 
-          <Select value={filters.location} onValueChange={(value) => handleFilterChange('location', value)}>
+          {/* <Select value={filters.location} onValueChange={(value) => handleFilterChange('location', value)}>
             <SelectTrigger>
               <SelectValue placeholder="Localização" />
             </SelectTrigger>
@@ -135,7 +135,7 @@ export function MentorFilters({ categories, locations, onFiltersChange }: Mentor
                 </SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </Select> */}
 
           <Select value={filters.priceRange} onValueChange={(value) => handleFilterChange('priceRange', value)}>
             <SelectTrigger>
