@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Users, Star, Zap } from 'lucide-react';
+import { ArrowRight, Users, Star, Zap, CreditCard, VerifiedIcon, CircleXIcon } from 'lucide-react';
 import Link from 'next/link';
 
 export function FindMentorCTA() {
@@ -19,7 +19,7 @@ export function FindMentorCTA() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/10 dark:from-primary/10 dark:to-secondary/5">
+    <section className="py-16 bg-secondary/90 dark:from-primary/10 dark:to-secondary/5">
       <div className="container mx-auto px-4 max-w-4xl">
         <motion.div
           ref={ref}
@@ -102,15 +102,15 @@ export function FindMentorCTA() {
             className="flex flex-wrap justify-center gap-6 text-sm text-gray-500 dark:text-gray-400"
           >
             <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-primary" />
+              <VerifiedIcon className="w-4 h-4 text-primary" />
               Mentores verificados
             </div>
             <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-primary" />
+              <CreditCard className="w-4 h-4 text-primary" />
               Pagamentos Seguros
             </div>
             <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-primary" />
+              <CircleXIcon className="w-4 h-4 text-primary" />
               Cancelamento flexível
             </div>
           </motion.div>
