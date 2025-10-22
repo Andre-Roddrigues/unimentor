@@ -1,11 +1,11 @@
-export default function BusinessMentorshipCTA() {
+export default function BusinessMentorshipCT() {
   return (
     <section className="w-full px-4 py-16 relative overflow-hidden bg-gradient-to-b from-secondary/0 to-secondary/10 p-12 md:p-16 lg:p-20">
       {/* Imagem no lugar dos círculos */}
-      <div className="absolute left-0 top-0 h-full w-1/2">
-        <div className="absolute left-[5%] top-1/2 -translate-y-1/2 h-[90%] aspect-square rounded-full overflow-hidden">
+      <div className="absolute left-0 min-w-6xl top-0 h-full ">
+        <div className="absolute left-[-15%] top-1/2 -translate-y-1/2 h-[100%] aspect-square  overflow-hidden">
           <img 
-            src="/images/empresa.jpg"
+            src="/images/empresas.png"
             alt="Mentoria para Empresas"
             className="w-full h-full object-cover"
           />
