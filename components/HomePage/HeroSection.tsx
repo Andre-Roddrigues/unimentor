@@ -44,7 +44,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-3xl text-primary md:text-4xl lg:text-6xl font-bold leading-tight">
               Transforme Sua Carreira com Mentoria de Excelência
             </h1>
             <p className="text-lg md:text-xl text-card-foreground leading-relaxed">
