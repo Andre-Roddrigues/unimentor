@@ -39,9 +39,9 @@ export default function BusinessMentorshipCTA() {
           </div> */}
 
           {/* Elementos decorativos adicionais */}
-          <div className="absolute left-[8%] top-1/2 w-20 h-20 bg-primary/10 rounded-full animate-pulse border border-primary/20"></div>
-          <div className="absolute left-[45%] bottom-1/4 w-14 h-14 bg-secondary/10 rounded-full animate-pulse border border-secondary/20" style={{ animationDuration: '3s' }}></div>
-          <div className="absolute left-[0%] top-2/3 w-12 h-12 bg-primary/5 rounded-full animate-pulse border border-primary/10" style={{ animationDuration: '4s' }}></div>
+          <div className="absolute left-[8%] top-1/2 w-20 h-20 bg-primary/10 rounded-full blur-xl  opacity-95 animate-pulse border border-primary/20"></div>
+          <div className="absolute left-[45%] bottom-1/4 w-14 h-14 bg-secondary/10 blur-xl opacity-95 rounded-full animate-pulse border border-secondary/20" style={{ animationDuration: '3s' }}></div>
+          <div className="absolute left-[0%] top-2/3 w-12 h-12 bg-primary/5 rounded-full blur-xl opacity-95 animate-pulse border border-primary/10" style={{ animationDuration: '4s' }}></div>
         </div>
       </div>
 

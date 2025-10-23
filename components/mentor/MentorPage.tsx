@@ -4,7 +4,8 @@ import { MentorFilters, FilterState } from '@/components/mentor/MentorFilters';
 import Container from '@/components/Container';
 import { Mentor } from '@/types/mentorship';
 import { Search } from 'lucide-react';
-import Link from 'next/link';
+import { useState, useMemo } from 'react';
+import { ViewToggle } from '@/components/mentor/MentorCard';
 
 const mockMentors: Mentor[] = [
   {
@@ -121,10 +122,40 @@ const allCategories = Array.from(new Set(mockMentors.flatMap(mentor => mentor.ca
 const allLocations = Array.from(new Set(mockMentors.map(mentor => mentor.location)));
 
 export default function MentoresPage() {
-  const filteredMentors = mockMentors;
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [filters, setFilters] = useState<FilterState>({
+    search: '',
+    category: 'all-categories',
+    location: 'all-locations',
+    priceRange: 'all-prices',
+    experience: 'all-experience',
+    sessionType: 'all',
+  });
 
-  const handleFiltersChange = (filters: FilterState) => {
-    console.log('Filtros aplicados:', filters);
+  const filteredMentors = useMemo(() => {
+    return mockMentors.filter(mentor =>
+      mentor.price >= priceRange[0] &&
+      mentor.price <= priceRange[1] &&
+      (filters.search === '' ||
+        mentor.name.toLowerCase().includes(filters.search.toLowerCase()) ||
+        mentor.categories.some(cat => cat.toLowerCase().includes(filters.search.toLowerCase())) ||
+        mentor.title.toLowerCase().includes(filters.search.toLowerCase())) &&
+      (filters.category === 'all-categories' || mentor.categories.includes(filters.category)) &&
+      (filters.experience === 'all-experience' || (
+        filters.experience === '0-2' && mentor.experience <= 2 ||
+        filters.experience === '3-5' && mentor.experience >= 3 && mentor.experience <= 5 ||
+        filters.experience === '5-10' && mentor.experience >= 5 && mentor.experience <= 10 ||
+        filters.experience === '10+' && mentor.experience > 10
+      )) &&
+      (filters.sessionType === 'all' ||
+        (filters.sessionType === 'online' && mentor.isOnline) ||
+        (filters.sessionType === 'presencial' && mentor.isLocal))
+    );
+  }, [priceRange, filters]);
+
+  const handleFiltersChange = (newFilters: FilterState) => {
+    setFilters(newFilters);
   };
 
   return (
@@ -135,7 +166,7 @@ export default function MentoresPage() {
             Encontre Mentores Locais
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Conecte-se com profissionais experientes para acelerar 
+            Conecte-se com profissionais experientes para acelerar
             sua carreira e desenvolvimento pessoal
           </p>
         </div>
@@ -145,35 +176,10 @@ export default function MentoresPage() {
             categories={allCategories}
             locations={allLocations}
             onFiltersChange={handleFiltersChange}
+            priceRange={priceRange}
+            onPriceRangeChange={setPriceRange}
           />
         </div>
-
-        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-          <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-              {mockMentors.length}+
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Mentores</div>
-          </div>
-          <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-            <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-              15+
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Categorias</div>
-          </div>
-          <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-              6+
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Cidades</div>
-          </div>
-          <div className="text-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-            <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-              4.8
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Avaliação Média</div>
-          </div>
-        </div> */}
 
         <div className="mb-8">
           <div className="flex justify-between items-center mb-6">
@@ -183,12 +189,17 @@ export default function MentoresPage() {
             <span className="text-gray-600 dark:text-gray-400">
               {filteredMentors.length} mentores encontrados
             </span>
+            <ViewToggle viewMode={viewMode} onViewModeChange={setViewMode} />
           </div>
 
           {filteredMentors.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={
+              viewMode === 'grid'
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                : "space-y-6"
+            }>
               {filteredMentors.map((mentor) => (
-                <MentorCard key={mentor.id} mentor={mentor} />
+                <MentorCard key={mentor.id} mentor={mentor} viewMode={viewMode} />
               ))}
             </div>
           ) : (
@@ -204,18 +215,6 @@ export default function MentoresPage() {
               </p>
             </div>
           )}
-        </div>
-
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white">
-          <h2 className="text-2xl font-bold mb-4">
-            Quer se tornar um mentor?
-          </h2>
-          <p className="mb-6 opacity-90">
-            Compartilhe seu conhecimento e ajude outros profissionais a crescerem
-          </p>
-          <Link href="https://unitec.co.mz/" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-            Cadastrar como Mentor
-          </Link>
         </div>
       </div>
     </Container>
