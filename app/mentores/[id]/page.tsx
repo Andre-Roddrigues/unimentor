@@ -85,16 +85,16 @@ export default function MentorDetailPage({ params }: Params) {
   const generateCalendar = () => {
     const year = currentMonth.getFullYear();
     const month = currentMonth.getMonth();
-    
+
     // Primeiro dia do mês
     const firstDay = new Date(year, month, 1);
     // Último dia do mês
     const lastDay = new Date(year, month + 1, 0);
     // Dia da semana do primeiro dia (0 = Domingo, 1 = Segunda, ...)
     const firstDayOfWeek = firstDay.getDay();
-    
+
     const days = [];
-    
+
     // Dias do mês anterior (para preencher o início)
     const prevMonthLastDay = new Date(year, month, 0).getDate();
     for (let i = firstDayOfWeek - 1; i >= 0; i--) {
@@ -105,20 +105,20 @@ export default function MentorDetailPage({ params }: Params) {
         isAvailable: false
       });
     }
-    
+
     // Dias do mês atual
     for (let day = 1; day <= lastDay.getDate(); day++) {
       const date = new Date(year, month, day);
       const dateString = date.toISOString().split('T')[0];
       const isAvailable = mentor.availability.some(a => a.date === dateString);
-      
+
       days.push({
         date: dateString,
         isCurrentMonth: true,
         isAvailable
       });
     }
-    
+
     // Dias do próximo mês (para preencher o final)
     const totalCells = 42; // 6 semanas * 7 dias
     const nextMonthDays = totalCells - days.length;
@@ -130,7 +130,7 @@ export default function MentorDetailPage({ params }: Params) {
         isAvailable: false
       });
     }
-    
+
     return days;
   };
 
@@ -175,12 +175,12 @@ export default function MentorDetailPage({ params }: Params) {
   const findNextAvailableMonth = (direction: 'prev' | 'next') => {
     const currentYear = currentMonth.getFullYear();
     const currentMonthNum = currentMonth.getMonth();
-    
+
     let year = currentYear;
     let month = currentMonthNum;
     let attempts = 0;
     const maxAttempts = 24; // Limitar a 2 anos para frente/trás
-    
+
     while (attempts < maxAttempts) {
       if (direction === 'next') {
         month++;
@@ -195,19 +195,19 @@ export default function MentorDetailPage({ params }: Params) {
           year--;
         }
       }
-      
+
       const hasAvailability = mentor.availability.some(avail => {
         const date = new Date(avail.date);
         return date.getFullYear() === year && date.getMonth() === month;
       });
-      
+
       if (hasAvailability) {
         return new Date(year, month, 1);
       }
-      
+
       attempts++;
     }
-    
+
     return currentMonth; // Retorna o mês atual se não encontrar
   };
 
@@ -241,7 +241,7 @@ export default function MentorDetailPage({ params }: Params) {
                 </div>
 
                 <div className="text-center">
-                  <h1 className="text-2xl font-bold text-primary dark:text-white">
+                  <h1 className="text-2xl font-bold text-muted-foreground dark:text-white">
                     {mentor.name}
                   </h1>
                   <p className="text-gray-600 dark:text-gray-300 mb-2">
@@ -275,11 +275,7 @@ export default function MentorDetailPage({ params }: Params) {
                     <span className="text-gray-500 ml-1">/hora</span>
                   </div>
 
-                  <Link href={`/mentores/agendar/${mentor.id}`}>
-                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                      Agendar Sessão
-                    </Button>
-                  </Link>
+
                 </div>
               </div>
 
@@ -345,8 +341,8 @@ export default function MentorDetailPage({ params }: Params) {
                           disabled={!day.isAvailable}
                           className={`
                             relative h-10 rounded-lg text-sm font-medium transition-all duration-200
-                            ${!day.isCurrentMonth 
-                              ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' 
+                            ${!day.isCurrentMonth
+                              ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed'
                               : day.isAvailable
                                 ? isSelected
                                   ? 'bg-primary text-primary-foreground shadow-md scale-105'
@@ -358,12 +354,11 @@ export default function MentorDetailPage({ params }: Params) {
                           `}
                         >
                           {formattedDate.day}
-                          
+
                           {/* Availability Dot */}
                           {day.isAvailable && day.isCurrentMonth && (
-                            <div className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
-                              isSelected ? 'bg-primary-foreground' : 'bg-secondary'
-                            }`} />
+                            <div className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${isSelected ? 'bg-primary-foreground' : 'bg-secondary'
+                              }`} />
                           )}
                         </button>
                       );
@@ -401,6 +396,11 @@ export default function MentorDetailPage({ params }: Params) {
                     </div>
                   </div>
                 )}
+                <Link href={`/mentores/agendar/${mentor.id}`}>
+                  <Button className="w-full mt-4  bg-primary text-primary-foreground hover:bg-primary/90">
+                    Agendar Sessão
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -424,7 +424,7 @@ export default function MentorDetailPage({ params }: Params) {
 
             {/* Specialties */}
             <section className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border">
-              <h2 className="text-2xl font-bold mb-4">Áreas de Especialização</h2>
+              <h2 className="text-2xl font-bold mb-4">Áreas</h2>
               <div className="flex flex-wrap gap-2">
                 {mentor.categories.map((category) => (
                   <Badge key={category} className="bg-primary text-primary-foreground px-3 py-1">

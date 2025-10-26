@@ -5,8 +5,8 @@ import { Users, Target, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import heroImage from "@/public/images/HeroMentor.jpg";
-import heroImage2 from "@/public/images/mentorhero.jpg";
+import heroImage from "@/public/images/HeroMentor.jpeg";
+import heroImage2 from "@/public/images/mentorhero1.jpeg";
 import Link from "next/link";
 import getAllBooks  from "@/lib/actions/books-actions";
 

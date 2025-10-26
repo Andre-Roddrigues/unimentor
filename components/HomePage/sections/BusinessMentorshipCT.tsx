@@ -7,7 +7,7 @@ export default function BusinessMentorshipCTA() {
           {/* Imagem principal */}
           <div className="absolute left-[15%] top-1/2 -translate-y-1/2 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[400px] lg:h-[400px] overflow-hidden shadow-2xl rounded-2xl">
             <img 
-              src="/images/mentors.jpg"
+              src="/images/Mentorempresa.png"
               alt="Mentoria para Empresas"
               className="w-full h-full object-cover"
             />
