@@ -176,8 +176,6 @@ export default function MentoresPage() {
             categories={allCategories}
             locations={allLocations}
             onFiltersChange={handleFiltersChange}
-            priceRange={priceRange}
-            onPriceRangeChange={setPriceRange}
           />
         </div>
 

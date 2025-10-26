@@ -220,7 +220,7 @@ export default function AgendarPage() {
                                     <div className="border-t pt-4">
                                         <div className="flex justify-between text-lg font-bold">
                                             <span>Total:</span>
-                                            <span className="text-green-600">MT {totalAmount.toFixed(2)}</span>
+                                            <span className="text-secondary">MT {totalAmount.toFixed(2)}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -251,7 +251,7 @@ export default function AgendarPage() {
                                 <Button
                                     onClick={handleConfirmBooking}
                                     disabled={isProcessing}
-                                    className="bg-green-600 hover:bg-green-700"
+                                    className="bg-primary hover:bg-primary/90"
                                 >
                                     {isProcessing ? 'Processando...' : 'Confirmar Agendamento'}
                                 </Button>
@@ -301,7 +301,7 @@ export default function AgendarPage() {
                                 <div className="border-t mt-4 pt-4">
                                     <div className="flex justify-between font-semibold">
                                         <span>Total:</span>
-                                        <span className="text-green-600">MT {totalAmount.toFixed(2)}</span>
+                                        <span className="text-secondary">MT {totalAmount.toFixed(2)}</span>
                                     </div>
                                 </div>
                             </div>
