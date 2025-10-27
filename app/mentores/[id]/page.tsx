@@ -388,7 +388,7 @@ export default function MentorDetailPage({ params }: Params) {
                       {getAvailableSlotsForDate(selectedDate).map((slot, index) => (
                         <div
                           key={index}
-                          className="text-xs bg-white dark:bg-gray-700 border border-secondary text-secondary dark:text-secondary-foreground py-2 px-3 rounded text-center font-medium hover:bg-secondary hover:text-white dark:hover:bg-secondary transition-colors duration-200 cursor-pointer"
+                          className="text-xs bg-white dark:bg-gray-700 border border-secondary text-gray-600 dark:text-secondary-foreground py-2 px-3 rounded text-center font-medium hover:bg-secondary hover:text-white dark:hover:bg-secondary transition-colors duration-200 cursor-pointer"
                         >
                           {slot}
                         </div>
@@ -466,7 +466,7 @@ export default function MentorDetailPage({ params }: Params) {
                           <span className="font-semibold text-gray-900 dark:text-white block">
                             {review.user}
                           </span>
-                          <span className="text-xs text-secondary">{review.date}</span>
+                          <span className="text-xs text-primary">{review.date}</span>
                         </div>
                       </div>
                       <div className="flex items-center text-yellow-500">
