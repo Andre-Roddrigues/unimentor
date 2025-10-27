@@ -466,7 +466,7 @@ export default function MentorDetailPage({ params }: Params) {
                           <span className="font-semibold text-gray-900 dark:text-white block">
                             {review.user}
                           </span>
-                          <span className="text-xs text-primary">{review.date}</span>
+                          <span className="text-xs text-gray-600">{review.date}</span>
                         </div>
                       </div>
                       <div className="flex items-center text-yellow-500">
