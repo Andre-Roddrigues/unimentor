@@ -46,7 +46,7 @@ export function FindMentorCTA() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl font-bold text-primary dark:text-white mb-4"
           >
-            Encontre Seu Mentor
+            Encontre Seu Profissional
           </motion.h2>
 
           {/* Description */}
@@ -57,7 +57,7 @@ export function FindMentorCTA() {
             className="text-lg text-primary dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
             Conecte-se com profissionais experientes que já trilharam o caminho que você quer seguir. 
-            Mentoria personalizada para seus objetivos específicos.
+            Mentoria, aulas e consultorias personalizada para seus objetivos específicos.
           </motion.p>
 
           {/* Stats */}
@@ -88,7 +88,7 @@ export function FindMentorCTA() {
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-base font-semibold"
             >
               <Users className="w-5 h-5 mr-2" />
-              Ver Mentores
+              Ver profissionais
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             </Link>

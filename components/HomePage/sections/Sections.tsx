@@ -8,6 +8,7 @@ import MentorCTA from "./MentorCTA";
 import CTASection from "./MentorCTA";
 import BusinessMentorshipCTA from "./BusinessMentorshipCTA";
 import BusinessMentorshipCT from "./BusinessMentorshipCT";
+import { SessionTypes } from "./AgendarSessao";
 
 export default function SectionHome() {
     return (
@@ -15,6 +16,7 @@ export default function SectionHome() {
             <WhyChooseUsMinimal />
             <SimpleMentorshipCarousel />
             <HowItWorks />
+            <SessionTypes />
             <FindMentorCTA />
             {/* <BusinessMentorshipCTA /> */}
             <BusinessMentorshipCT />
